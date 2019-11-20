@@ -22,6 +22,7 @@ RegisterCommand('adjcar', function(source, args)
 
     -- create the vehicle
     local vehicle = CreateVehicle(vehicleName, pos.x, pos.y, pos.z, GetEntityHeading(playerPed), true, false)
+	SetVehicleMod(vehicle, 15, 3)
     SetPedIntoVehicle(playerPed, vehicle, -1)
 
     SetEntityAsNoLongerNeeded(vehicle)
@@ -34,5 +35,6 @@ RegisterCommand('adjgetpos', function(source, args)
 
 	TriggerEvent('chat:addMessage', {
 		args = { 'X: ' .. pos.x .. ' Y: ' .. pos.y .. ' Z: ' .. pos.z }
-	})
+    })
+    TriggerServerEvent('adjutor:logpos', pos)
 end, false)
